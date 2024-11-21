@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.pmdm_pr9_pokemon.databinding.FragmentMostrarPokemonBinding;
 
 public class MostrarPokemonFragment extends Fragment {
@@ -31,7 +32,7 @@ public class MostrarPokemonFragment extends Fragment {
 
         pokemonsViewModel.seleccionado().observe(getViewLifecycleOwner(), pokemon -> {
             binding.name.setText(pokemon.name);
-            binding.image.setImageResource(pokemon.image);
+            Glide.with(requireContext()).load(pokemon.image).into(binding.image);
             binding.description.setText(pokemon.flavor_text);
         });
     }

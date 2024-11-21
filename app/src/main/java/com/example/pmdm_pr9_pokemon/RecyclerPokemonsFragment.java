@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.pmdm_pr9_pokemon.databinding.FragmentRecyclerPokemonsBinding;
 import com.example.pmdm_pr9_pokemon.databinding.ViewholderPokemonBinding;
 
@@ -57,7 +58,7 @@ public class RecyclerPokemonsFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull PokemonViewHolder holder, int position) {
             Pokemon pokemon = pokemons.get(position);
-            holder.binding.image.setImageResource(pokemon.image);
+            Glide.with(holder.binding.image.getContext()).load(pokemon.image).into(holder.binding.image);
             holder.binding.name.setText(pokemon.name);
 
             holder.itemView.setOnClickListener(view -> {
